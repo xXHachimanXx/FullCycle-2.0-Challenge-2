@@ -4,16 +4,18 @@ services:
   
     react-app:
         build: ./nest-api
-        entrypoint: ./nest-api/.docker/entrypoint.sh
+        entrypoint: .docker/entrypoint.sh
         ports: 
-        - 3001:3000
+            - 3001:3000
         volumes:
-        - .:/home/node/app
+            - ./react-frontend:/home/node/app
+        depends_on: 
+            - nest-api
 
     nest-api:
         build: ./react-frontend
-        entrypoint: ./nest-api/.docker/entrypoint.sh
+        entrypoint: .docker/entrypoint.sh
         ports: 
           - 3000:3000
         volumes:
-          - .:/home/node/app
+          - ./nest-api:/home/node/app
