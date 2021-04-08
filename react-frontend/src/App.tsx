@@ -1,23 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
+import { Route } from './utils/models'
+import api  from './utils/api'
 import './App.css';
 
 function App() {
+  const [routes, setRoutes] = useState<Route[]>([]);
+  const API_URL = "localhost:3000";
+
+  useEffect( () => {
+    api.get('./routes')
+      .then(res => {
+        setRoutes(res.data)
+      });
+    // fetch(`${API_URL}/routes`)
+    //   .then((data) => data.json())
+    //   .then((data) => setRoutes(data));
+  }
+  ,[]);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ul className="list">
+          {routes.length}
+          {routes?.map((r, k) => {
+            <li className="route-item" key={k}>
+              
+                {"Title: " + r.title}
+                {"Start Position: " + "Lat:" + r.startPosition.lat + ";Long:" + r.startPosition.lng}
+                {"End Position -> " + "Lat:" + r.endPosition.lat + ";Long:" + r.endPosition.lng}
+              
+            </li>
+          })}
+
+        </ul>
       </header>
     </div>
   );
