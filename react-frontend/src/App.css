@@ -21,8 +21,21 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
+
+table {
+  color: aliceblue;
+  width: 40%;
+  border-collapse: collapse;
+  text-align: center;
+  border: solid thin;
+}
+
+th, td {
+  border-style: none solid; 
+  border: solid thin;
+}
+tr:hover {background-color: #1f2229;}
 
 .App-link {
   color: #61dafb;
