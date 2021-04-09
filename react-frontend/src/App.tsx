@@ -5,15 +5,21 @@ import api  from './utils/api'
 import './App.css';
 
 function App() {
-  const [routes, setRoutes] = useState<Route[]>([]);
+  const [routes, setRoutes] = useState<Route[]>([
+    
+  ]);
   const API_URL = "localhost:3000";
 
   useEffect( () => {
-    api.get('./routes')
-      .then(res => {
-        setRoutes(res.data)
+    api.get('routes')
+      .then((res) => {
+        console.log(res);
+        setRoutes(res.data);
       });
-    // fetch(`${API_URL}/routes`)
+      console.log(routes);
+      
+      
+    // fetch("http://localhost:3000/routes")
     //   .then((data) => data.json())
     //   .then((data) => setRoutes(data));
   }
@@ -23,17 +29,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <ul className="list">
-          {routes.length}
-          {routes?.map((r, k) => {
+          {routes?.map((r, k) => (
             <li className="route-item" key={k}>
-              
-                {"Title: " + r.title}
-                {"Start Position: " + "Lat:" + r.startPosition.lat + ";Long:" + r.startPosition.lng}
-                {"End Position -> " + "Lat:" + r.endPosition.lat + ";Long:" + r.endPosition.lng}
-              
+              {"Title: " + r.title} <br/>
+              {"Start Position: " + "Lat:" + r.startPosition.lat + ";Long:" + r.startPosition.lng} <br/>
+              {"End Position: " + "Lat:" + r.endPosition.lat + ";Long:" + r.endPosition.lng} <br/>
+              <br/>
             </li>
-          })}
-
+            
+          ))}
         </ul>
       </header>
     </div>

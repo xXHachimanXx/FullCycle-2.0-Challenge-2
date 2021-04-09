@@ -4,9 +4,10 @@ import { generateRoutes } from './utils/utils';
 
 @Injectable()
 export class AppService {
-  async getAllRoutes() :Promise<Route[]> {
-    const routes :Array<Route> = generateRoutes();
+  private routes :Route[] = generateRoutes();
 
-    return routes;
+  async getAllRoutes() {
+
+    return this.routes;
   }
 }
