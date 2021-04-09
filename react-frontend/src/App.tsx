@@ -28,17 +28,27 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <ul className="list">
-          {routes?.map((r, k) => (
-            <li className="route-item" key={k}>
-              {"Title: " + r.title} <br/>
-              {"Start Position: " + "Lat:" + r.startPosition.lat + ";Long:" + r.startPosition.lng} <br/>
-              {"End Position: " + "Lat:" + r.endPosition.lat + ";Long:" + r.endPosition.lng} <br/>
-              <br/>
-            </li>
-            
-          ))}
-        </ul>
+
+      <table>
+					<thead>
+						<tr>
+							<th>Route</th>
+							<th>Start Position (Lat/Long)</th>
+							<th>End Position (Lat/Long)</th>
+						</tr>
+					</thead>
+					<tbody>
+						{routes?.map(r => 
+							<tr>
+								<td>{r.title}</td>
+								<td>{r.startPosition.lat} / {r.startPosition.lat}</td>
+								<td>{r.endPosition.lng} / {r.endPosition.lng}</td>
+							</tr>
+						)}
+					</tbody>
+      </table>
+
+       
       </header>
     </div>
   );
