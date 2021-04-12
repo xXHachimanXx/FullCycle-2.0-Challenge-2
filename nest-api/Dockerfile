@@ -1,11 +1,9 @@
 FROM node:12.14.0-alpine3.11
 
-WORKDIR /usr/src/app
+RUN apk add --no-cache bash
 
-COPY package*.json ./
+RUN npm install -g @nestjs/cli@7.5.6
 
-RUN npm install
+USER node
 
-COPY . .
-
-CMD ["npm","run","start:dev"]
+WORKDIR /home/node/app

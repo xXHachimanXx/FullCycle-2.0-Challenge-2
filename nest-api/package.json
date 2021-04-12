@@ -1,5 +1,5 @@
 {
-  "name": "nest-api",
+  "name": "nest-routes",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -29,8 +29,6 @@
     "rxjs": "^6.6.6"
   },
   "devDependencies": {
-    "@nestjs/common": "^7.6.15",
-    "@nestjs/core": "^7.6.15",
     "@nestjs/cli": "^7.6.0",
     "@nestjs/schematics": "^7.3.0",
     "@nestjs/testing": "^7.6.15",

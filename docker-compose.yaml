@@ -1,15 +1,16 @@
-version: '3'
-
+version: "3"
 services:
-  
-    react-app:
-        build: ./react-frontend
-        ports: 
-            - 3001:3000
-        depends_on: 
-            - nest-api
-
-    nest-api: 
-        build: ./nest-api 
-        ports: 
-            - 3000:3000
+  rest-api:
+    build: nest-api
+    entrypoint: ./.docker/entrypoint.sh
+    ports: 
+      - 3000:3000
+    volumes:
+      - ./nest-api:/home/node/app
+  react-frontend:
+    build: react-frontend
+    entrypoint: ./.docker/entrypoint.sh
+    ports: 
+      - 3001:3000
+    volumes:
+      - ./react-frontend:/home/node/app
