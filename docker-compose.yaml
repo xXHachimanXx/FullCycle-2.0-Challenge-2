@@ -6,8 +6,6 @@ services:
         build: ./react-frontend
         ports: 
             - 3001:3000
-        volumes:
-            - ./react-frontend:/home/node/app
         depends_on: 
             - nest-api
 
@@ -15,5 +13,3 @@ services:
         build: ./nest-api 
         ports: 
             - 3000:3000
-        volumes:
-            - ./nest-api:/home/node/app
