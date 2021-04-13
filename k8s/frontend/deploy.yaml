@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: james1515/imersao2-frontend:latest
+          image: james1515/react-frontend:latest
           ports:
             - containerPort: 3001
